@@ -1,0 +1,17 @@
+<div data-controller="dialog">
+  <p style="color: green">
+    <%= turbo_frame_tag "flash" %>
+  </p>
+
+  <h1>Questionnaires</h1>
+
+  <dialog data-dialog-target="dialog">
+    <%= turbo_frame_tag 'modal' %>
+  </dialog>
+  <%= link_to "New questionnaire", new_questionnaire_path, data: { "turbo-frame": "modal", action: "click->dialog#open" } %>
+  <turbo-frame id="questionnaires" class="questionnaires">
+    <% @questionnaires.each_with_index do |questionnaire, i| %>
+        <%= render questionnaire, { i: i } %>
+    <% end %>
+  </turbo-frame>
+<div>

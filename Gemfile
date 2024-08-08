@@ -46,9 +46,7 @@ gem 'bootsnap', require: false
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem 'brakeman', '~> 6.1'
   gem 'debug', platforms: %i[mri windows]
-  gem 'reek', '~> 6.3'
   gem 'rubocop', '~> 1.65'
 end
 
@@ -60,7 +58,6 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
-  gem 'rspec-rails', '~> 6.1'
   gem 'selenium-webdriver'
 end
 

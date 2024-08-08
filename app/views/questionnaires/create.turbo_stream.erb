@@ -1,0 +1,14 @@
+<%= turbo_stream.append "questionnaires" do %>
+  <%= render @questionnaire, { i: 0 } %>
+<% end %>
+<%= turbo_stream.update Questionnaire.new, link_to("New questionnaire", new_questionnaire_path) %>
+<%= turbo_stream.after Questionnaire.new do %>
+  <script charset="utf-8">
+    Array.from(document.querySelector('.questionnaires').children).forEach((child, i) => {
+      div = child.querySelector('div')
+        div.removeAttribute( 'style' )
+        div.style['background-color'] = ['red', 'none'][i % 2]
+    })
+  </script>
+<% end %>
+<%= turbo_stream.update("flash", "Questionnaire successfully created") %>

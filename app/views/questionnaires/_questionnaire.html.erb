@@ -1,0 +1,39 @@
+<turbo-frame id="<%= dom_id questionnaire %>">
+  <div>
+    <div>
+      <p>
+        <strong>First name:</strong>
+        <%= questionnaire.first_name %>
+      </p>
+
+      <p>
+        <strong>Last name:</strong>
+        <%= questionnaire.last_name %>
+      </p>
+
+      <p>
+        <strong>Age:</strong>
+        <%= questionnaire.age %>
+      </p>
+
+      <p>
+        <strong>Height:</strong>
+        <%= questionnaire.height %>
+      </p>
+
+      <p>
+        <strong>Favourite color:</strong>
+        <%= questionnaire.favourite_color %>
+      </p>
+
+      <p>
+        <strong>Sex:</strong>
+        <%= questionnaire.sex %>
+      </p>
+
+    </div>
+    <%= link_to "Edit this questionnaire", edit_questionnaire_path(questionnaire), data: { "turbo-frame": "modal", action: "click->dialog#open" } %>
+    |
+    <%= button_to "Destroy this questionnaire", questionnaire, method: :delete, data: { "turbo-frame": "questionnaires" } %>
+  </div>
+</turbo-frame>

@@ -1,0 +1,11 @@
+<%= turbo_frame_tag 'modal', src: '/questionnaires' do %>
+  <h1>New questionnaire</h1>
+
+  <%= render FormComponent.new(questionnaire: @questionnaire) %>
+
+  <br>
+
+  <div>
+    <%= link_to "Cancel", questionnaires_path, data: { turbo_frame: dom_id(Questionnaire.new), action: "click->dialog#close"} %>
+  </div>
+<% end %>
