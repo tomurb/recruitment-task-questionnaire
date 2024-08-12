@@ -8,7 +8,8 @@
   <dialog data-dialog-target="dialog">
     <%= turbo_frame_tag 'modal' %>
   </dialog>
-  <%= link_to "New questionnaire", new_questionnaire_path, data: { "turbo-frame": "modal", action: "click->dialog#open" } %>
+  <%= link_to "New questionnaire", new_questionnaire_path, data: { turbo_frame: 'modal', action: "click->dialog#open" } %>
+  <%= button_to 'refresh', questionnaires_path, method: :get, data: { turbo_frame: 'questionnaires' } %>
   <turbo-frame id="questionnaires" class="questionnaires">
     <% @questionnaires.each_with_index do |questionnaire, i| %>
         <%= render questionnaire, { i: i } %>

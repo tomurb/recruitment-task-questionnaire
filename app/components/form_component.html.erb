@@ -1,0 +1,50 @@
+<%= turbo_frame_tag "_form", data: { controller: 'form'} do %>
+  <%= form_with(model: @questionnaire) do |form| %>
+    <% if @questionnaire.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(@questionnaire.errors.count, "error") %> prohibited this questionnaire from being saved:</h2>
+
+        <ul>
+          <% @questionnaire.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div>
+      <%= form.label :first_name, style: "display: block" %>
+      <%= form.text_field :first_name %>
+    </div>
+
+    <div>
+      <%= form.label :last_name, style: "display: block" %>
+      <%= form.text_field :last_name %>
+    </div>
+
+    <div>
+      <%= form.label :age, style: "display: block" %>
+      <%= form.number_field :age %>
+    </div>
+
+    <div>
+      <%= form.label :height, style: "display: block" %>
+      <%= form.number_field :height %>
+    </div>
+
+    <div>
+      <%= form.label :favourite_color, style: "display: block" %>
+      <%= form.text_field :favourite_color, data: { form_target: 'favouriteColor' } %>
+      <button data-action="click->form#drawColor:prevent">Draw color!</button>
+    </div>
+
+    <div>
+      <%= form.label :sex, style: "display: block" %>
+      <%= form.select :sex, Questionnaire.sexes.keys %>
+    </div>
+
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
+<% end %>
